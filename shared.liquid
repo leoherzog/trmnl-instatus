@@ -1,0 +1,156 @@
+{% template title_bar %}
+<div class="title_bar">
+  <img class="image image-dither" src="data:image/png;base64,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">
+  {% if layout_style == 'full' or layout_style == 'half-horizontal' %}
+  <span class="title">{{ IDX_0.page.name }}</span>
+  {% endif %}
+  <span class="instance">
+    Updated {{ updated_iso | l_date: mask_datetime, trmnl.user.locale }}
+  </span>
+</div>
+{% endtemplate %}
+
+{% template main %}
+{% if trmnl.plugin_settings.custom_fields_values.timemode == '24_hour' %}
+{% assign mask_datetime = '%-m/%-d %H:%M' %}
+{% else %}
+{% assign mask_datetime = '%-m/%-d %-I:%M%P' %}
+{% endif %}
+
+{% assign updated_iso = trmnl.system.timestamp_utc | date: "%s" | plus: trmnl.user.utc_offset | date: "%Y-%m-%dT%H:%M:%S%z" %}
+
+{% unless IDX_0 %}
+<div class="layout layout--center">
+  <span class="label label--gray lg:label--large">No status data available</span>
+</div>
+{% render 'title_bar', IDX_0: IDX_0, trmnl: trmnl, layout_style: layout_style, updated_iso: updated_iso, mask_datetime: mask_datetime %}
+{% endunless %}
+
+{% if IDX_0 %}
+{% assign incident_count = IDX_0.activeIncidents.size | default: 0 %}
+{% assign maintenance_count = IDX_0.activeMaintenances.size | default: 0 %}
+{% assign total_issues = incident_count | plus: maintenance_count %}
+
+{% comment %} Determine page status display text {% endcomment %}
+{% if IDX_0.page.status == 'UP' %}
+  {% assign page_status_text = 'All Systems Operational' %}
+{% elsif IDX_0.page.status == 'UNDERMAINTENANCE' %}
+  {% assign page_status_text = 'Under Maintenance' %}
+{% else %}
+  {% assign page_status_text = 'Issues Detected' %}
+{% endif %}
+
+{% if total_issues == 0 %}
+{%- comment -%} All clear: center the status prominently {%- endcomment -%}
+<div class="layout layout--center">
+  <div class="flex flex--col flex--center gap--small lg:gap--medium">
+    <span class="title lg:title--large text--center">{{ IDX_0.page.name }}</span>
+    <span class="label lg:label--large">{{ page_status_text }}</span>
+  </div>
+</div>
+
+{% else %}
+<div class="layout layout--col">
+  {% comment %} Top: Page name + status summary {% endcomment %}
+  <div class="flex flex--row flex--center-y gap--small">
+    <span class="title title--large lg:title--xlarge">{{ IDX_0.page.name }}</span>
+    {% if IDX_0.page.status == 'UNDERMAINTENANCE' %}
+    <span class="label label--small lg:label--base label--outline no-shrink">Under Maintenance</span>
+    {% else %}
+    <span class="label label--small lg:label--base label--inverted 4bit:label--outline no-shrink">Issues Detected</span>
+    {% endif %}
+  </div>
+
+  {% comment %} Below: Incidents + Maintenances list with overflow {% endcomment %}
+  <div class="columns h--full" data-overflow="true" data-overflow-max-cols="1" data-overflow-max-cols-lg="2" data-overflow-max-cols-portrait="1" data-overflow-counter="true">
+    <div class="column">
+
+      {% if incident_count > 0 %}
+      <span class="label lg:label--large">Active Incidents</span>
+
+      {% for incident in IDX_0.activeIncidents %}
+        {% assign emphasis = '' %}
+        {% assign status_text = incident.status %}
+        {% if incident.status == 'INVESTIGATING' %}
+          {% assign emphasis = ' item--emphasis-3' %}
+          {% assign status_text = 'Investigating' %}
+        {% elsif incident.status == 'IDENTIFIED' %}
+          {% assign emphasis = ' item--emphasis-2' %}
+          {% assign status_text = 'Identified' %}
+        {% elsif incident.status == 'MONITORING' %}
+          {% assign emphasis = ' item--emphasis-1' %}
+          {% assign status_text = 'Monitoring' %}
+        {% elsif incident.status == 'RESOLVED' %}
+          {% assign status_text = 'Resolved' %}
+        {% endif %}
+
+        <div class="item{{ emphasis }}">
+          <div class="meta"></div>
+          <div class="content">
+            <div class="flex flex--row flex--center-y">
+              <span class="title title--small lg:title--base" data-clamp="1" data-clamp-lg="2">{{ incident.name }}</span>
+              {% if incident.status == 'MONITORING' %}
+              <span class="label label--small label--outline no-shrink">{{ status_text }}</span>
+              {% else %}
+              <span class="label label--small label--inverted 4bit:label--outline no-shrink">{{ status_text }}</span>
+              {% endif %}
+            </div>
+            {% if incident.start %}
+            <span class="label label--small label--underline">
+              {{ incident.start | l_date: mask_datetime, trmnl.user.locale }}
+            </span>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+      {% endif %}
+
+      {% if maintenance_count > 0 %}
+      <span class="label lg:label--large">Scheduled Maintenance</span>
+
+      {% for maint in IDX_0.activeMaintenances %}
+        {% assign emphasis = '' %}
+        {% assign status_text = maint.status %}
+        {% if maint.status == 'INPROGRESS' %}
+          {% assign emphasis = ' item--emphasis-2' %}
+          {% assign status_text = 'In Progress' %}
+        {% elsif maint.status == 'NOTSTARTEDYET' %}
+          {% assign emphasis = ' item--emphasis-1' %}
+          {% assign status_text = 'Scheduled' %}
+        {% elsif maint.status == 'COMPLETED' %}
+          {% assign status_text = 'Completed' %}
+        {% endif %}
+
+        {% assign duration_h = maint.duration | default: 0 | divided_by: 60 %}
+        {% assign duration_m = maint.duration | default: 0 | modulo: 60 %}
+
+        <div class="item{{ emphasis }}">
+          <div class="meta"></div>
+          <div class="content">
+            <div class="flex flex--row flex--center-y">
+              <span class="title title--small lg:title--base" data-clamp="1" data-clamp-lg="2">{{ maint.name }}</span>
+              {% if maint.status == 'INPROGRESS' %}
+              <span class="label label--small label--inverted 4bit:label--outline no-shrink">{{ status_text }}</span>
+              {% else %}
+              <span class="label label--small label--outline no-shrink">{{ status_text }}</span>
+              {% endif %}
+            </div>
+            <div class="flex gap--small">
+              <span class="label label--small label--underline">
+                {{ maint.start | l_date: mask_datetime, trmnl.user.locale }}
+                {% if duration_h > 0 %} - {{ duration_h }}h{% endif %}{% if duration_m > 0 %} {{ duration_m }}m{% endif %}
+              </span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% render 'title_bar', IDX_0: IDX_0, trmnl: trmnl, layout_style: layout_style, updated_iso: updated_iso, mask_datetime: mask_datetime %}
+{% endif %}
+{% endtemplate %}
