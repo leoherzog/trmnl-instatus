@@ -96,8 +96,9 @@
               {% endif %}
             </div>
             {% if incident.start %}
+            {% assign start_local = incident.start | date: "%s" | plus: trmnl.user.utc_offset | date: "%Y-%m-%dT%H:%M:%S%z" %}
             <span class="label label--small label--underline">
-              {{ incident.start | l_date: mask_datetime, trmnl.user.locale }}
+              {{ start_local | l_date: mask_datetime, trmnl.user.locale }}
             </span>
             {% endif %}
           </div>
@@ -135,9 +136,10 @@
               <span class="label label--small label--outline no-shrink">{{ status_text }}</span>
               {% endif %}
             </div>
+            {% assign start_local = maint.start | date: "%s" | plus: trmnl.user.utc_offset | date: "%Y-%m-%dT%H:%M:%S%z" %}
             <div class="flex gap--small">
               <span class="label label--small label--underline">
-                {{ maint.start | l_date: mask_datetime, trmnl.user.locale }}
+                {{ start_local | l_date: mask_datetime, trmnl.user.locale }}
                 {% if duration_h > 0 %} - {{ duration_h }}h{% endif %}{% if duration_m > 0 %} {{ duration_m }}m{% endif %}
               </span>
             </div>
