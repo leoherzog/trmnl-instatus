@@ -1,6 +1,7 @@
 // TRMNL serverless transform (Node.js 20 runtime).
 // Enriches each active incident/maintenance from summary.json with the text of
-// its most recent update, which Instatus only publishes via the history feed.
+// its most recent update, which Instatus only publishes via the history feed,
+// and with the account's UTC offset at its start for the Vestaboard layout.
 
 const ENTITIES = { "&lt;": "<", "&gt;": ">", "&quot;": '"', "&#039;": "'", "&amp;": "&" };
 
@@ -12,6 +13,19 @@ function unescape(text) {
     text = text.split(entity).join(char); // &amp; last, so it decodes once
   }
   return text;
+}
+
+// Seconds east of UTC in `timeZone` at `date`, or null for an unknown zone.
+function utcOffset(date, timeZone) {
+  try {
+    const name = new Intl.DateTimeFormat("en-US", { timeZone, timeZoneName: "longOffset" })
+      .formatToParts(date)
+      .find((p) => p.type === "timeZoneName").value; // "GMT-04:00", or "GMT" at zero
+    const m = name.match(/([+-])(\d{2}):(\d{2})/);
+    return m ? (m[1] === "-" ? -1 : 1) * (m[2] * 3600 + m[3] * 60) : 0;
+  } catch (e) {
+    return null;
+  }
 }
 
 // Returns the final update in a run-together RSS description, or null.
@@ -58,11 +72,18 @@ async function run(input) {
     ? `${affected} component${affected === 1 ? "" : "s"} affected`
     : null;
 
+  // The Vestaboard layout has no Intl, so it shifts times by these offsets.
+  // Each entry carries its own, since a later start can fall after a DST change.
+  const timeZone = input.trmnl && input.trmnl.user && input.trmnl.user.time_zone_iana;
+  summary.utcOffset = timeZone ? utcOffset(new Date(), timeZone) : null;
+
   for (const key of ["activeIncidents", "activeMaintenances"]) {
     for (const entry of summary[key] || []) {
       const found = updates[entry.id];
       entry.lastUpdate = found ? found.body : null;
       entry.lastUpdateStatus = found ? found.status : null;
+      const start = new Date(entry.started || entry.start);
+      entry.utcOffset = timeZone && !isNaN(start) ? utcOffset(start, timeZone) : null;
     }
   }
 
